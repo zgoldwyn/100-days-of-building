@@ -36,36 +36,66 @@ jobs:
 
           today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
-          # Prevent a second project from being generated on the same UTC day.
+          # Prevent more than one generated project on the same UTC day.
           existing_today = list(projects_dir.glob(f"{today}-*"))
+
           if existing_today:
-              print(f"A project already exists for {today}: {existing_today[0]}")
+              print(
+                  f"A project already exists for {today}: "
+                  f"{existing_today[0]}"
+              )
               raise SystemExit(0)
 
-          existing_names = [
-              path.name
-              for path in sorted(projects_dir.iterdir())
-              if path.is_dir()
-          ]
+          # Read existing project README files so the model can avoid
+          # generating duplicate or highly similar projects.
+          existing_projects = []
 
-          # Keep the prompt small as the repository grows.
-          recent_names = existing_names[-100:]
-          existing_text = "\n".join(f"- {name}" for name in recent_names)
+          for project_dir in sorted(projects_dir.iterdir()):
+              if not project_dir.is_dir():
+                  continue
+
+              readme_path = project_dir / "README.md"
+
+              if readme_path.exists():
+                  readme_text = readme_path.read_text(
+                      encoding="utf-8",
+                      errors="ignore",
+                  )
+
+                  # Limit each README excerpt to control token usage.
+                  readme_excerpt = readme_text[:800].strip()
+
+                  existing_projects.append(
+                      f"Folder: {project_dir.name}\n"
+                      f"README:\n{readme_excerpt}"
+                  )
+              else:
+                  existing_projects.append(
+                      f"Folder: {project_dir.name}\n"
+                      "README: unavailable"
+                  )
+
+          # Only compare against the most recent 100 projects.
+          recent_projects = existing_projects[-100:]
+
+          existing_text = "\n\n---\n\n".join(recent_projects)
+
           if not existing_text:
-              existing_text = "- No previous projects"
+              existing_text = "No previous projects exist."
 
           prompt = f"""
           Create one original, extremely small beginner-friendly web project.
 
           Requirements:
-          - It must not duplicate or closely resemble anything in the existing list.
+          - Do not duplicate or closely resemble any existing project below.
+          - Compare the title, purpose, interaction, and core mechanic.
           - Use only plain HTML, CSS, and JavaScript.
           - Put everything in one index.html file.
-          - No packages, external APIs, external images, or build tools.
-          - The project must work by opening index.html in a browser.
+          - Do not use packages, external APIs, external images, or build tools.
+          - The project must work by opening index.html in a web browser.
           - Keep index.html below 180 lines.
-          - Include a useful interactive feature.
-          - Do not use markdown fences.
+          - Include at least one useful interactive feature.
+          - Do not use markdown code fences.
           - Return only valid JSON.
 
           Required JSON structure:
@@ -76,7 +106,8 @@ jobs:
             "index_html": "<!DOCTYPE html>..."
           }}
 
-          Existing project list:
+          Existing projects and README summaries:
+
           {existing_text}
           """
 
@@ -90,91 +121,125 @@ jobs:
                           "web projects and return strictly valid JSON."
                       ),
                   },
-                  {"role": "user", "content": prompt},
+                  {
+                      "role": "user",
+                      "content": prompt,
+                  },
               ],
               "temperature": 0.9,
               "max_tokens": 2500,
-              "response_format": {"type": "json_object"},
+              "response_format": {
+                  "type": "json_object"
+              },
           }
 
           request = urllib.request.Request(
               "https://models.github.ai/inference/chat/completions",
               data=json.dumps(payload).encode("utf-8"),
               headers={
-                  "Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}",
+                  "Authorization": (
+                      f"Bearer {os.environ['GITHUB_TOKEN']}"
+                  ),
                   "Content-Type": "application/json",
                   "Accept": "application/vnd.github+json",
               },
               method="POST",
           )
 
-          with urllib.request.urlopen(request, timeout=90) as response:
-              api_result = json.loads(response.read().decode("utf-8"))
+          with urllib.request.urlopen(
+              request,
+              timeout=90,
+          ) as response:
+              api_result = json.loads(
+                  response.read().decode("utf-8")
+              )
 
           content = api_result["choices"][0]["message"]["content"]
           project = json.loads(content)
 
-          required = {"name", "title", "description", "index_html"}
-          missing = required - project.keys()
-          if missing:
-              raise ValueError(f"Model response is missing fields: {missing}")
+          required_fields = {
+              "name",
+              "title",
+              "description",
+              "index_html",
+          }
 
-          name = re.sub(r"[^a-z0-9-]", "-", project["name"].lower())
+          missing_fields = required_fields - project.keys()
+
+          if missing_fields:
+              raise ValueError(
+                  f"Model response is missing fields: {missing_fields}"
+              )
+
+          name = re.sub(
+              r"[^a-z0-9-]",
+              "-",
+              project["name"].lower(),
+          )
+
           name = re.sub(r"-+", "-", name).strip("-")
 
           if not name:
-              raise ValueError("The generated project name is invalid.")
+              raise ValueError(
+                  "The generated project name is invalid."
+              )
 
           folder = projects_dir / f"{today}-{name}"
 
           if folder.exists():
-              raise ValueError(f"Project folder already exists: {folder}")
+              raise ValueError(
+                  f"Project folder already exists: {folder}"
+              )
 
           html = project["index_html"].strip()
 
           if not html.lower().startswith("<!doctype html"):
-              raise ValueError("Generated file is not a complete HTML document.")
+              raise ValueError(
+                  "Generated file is not a complete HTML document."
+              )
 
           folder.mkdir()
 
-          (folder / "index.html").write_text(
+          index_file = folder / "index.html"
+          index_file.write_text(
               html + "\n",
               encoding="utf-8",
           )
 
-          readme = f"""# {project['title']}
+          project_readme = (
+              f"# {project['title']}\n\n"
+              f"{project['description']}\n\n"
+              "## Run\n\n"
+              "Open `index.html` in a web browser.\n\n"
+              "## Generation\n\n"
+              f"Generated automatically on {today} "
+              "using GitHub Models.\n"
+          )
 
-          {project['description']}
-
-          ## Run
-
-          Open `index.html` in a web browser.
-
-          ## Generation
-
-          Generated automatically on {today} using GitHub Models.
-          """
-
-          # Remove indentation introduced by the Python source.
-          readme = "\n".join(line.strip() for line in readme.splitlines())
-          (folder / "README.md").write_text(
-              readme.strip() + "\n",
+          readme_file = folder / "README.md"
+          readme_file.write_text(
+              project_readme,
               encoding="utf-8",
           )
 
-          index_path = projects_dir / "README.md"
+          projects_index = projects_dir / "README.md"
 
-          if not index_path.exists():
-              index_path.write_text(
+          if not projects_index.exists():
+              projects_index.write_text(
                   "# Daily Mini Projects\n\n"
-                  "Small projects generated as part of a daily building experiment.\n",
+                  "Small projects generated as part of a daily "
+                  "building experiment.\n",
                   encoding="utf-8",
               )
 
-          with index_path.open("a", encoding="utf-8") as file:
+          with projects_index.open(
+              "a",
+              encoding="utf-8",
+          ) as file:
               file.write(
                   f"\n- [{today}: {project['title']}]"
-                  f"(./{folder.name}/) — {project['description']}\n"
+                  f"(./{folder.name}/) — "
+                  f"{project['description']}\n"
               )
 
           print(f"Created {folder}")
