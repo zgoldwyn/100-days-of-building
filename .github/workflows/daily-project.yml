@@ -1,0 +1,200 @@
+name: Generate daily mini project
+
+on:
+  schedule:
+    # 12:17 UTC = 5:17 AM PDT / 4:17 AM PST
+    - cron: "17 12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  models: read
+
+jobs:
+  generate-project:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Generate mini project
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 <<'PYTHON'
+          import json
+          import os
+          import pathlib
+          import re
+          import urllib.request
+          from datetime import datetime, timezone
+
+          root = pathlib.Path(".")
+          projects_dir = root / "projects"
+          projects_dir.mkdir(exist_ok=True)
+
+          today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+          # Prevent a second project from being generated on the same UTC day.
+          existing_today = list(projects_dir.glob(f"{today}-*"))
+          if existing_today:
+              print(f"A project already exists for {today}: {existing_today[0]}")
+              raise SystemExit(0)
+
+          existing_names = [
+              path.name
+              for path in sorted(projects_dir.iterdir())
+              if path.is_dir()
+          ]
+
+          # Keep the prompt small as the repository grows.
+          recent_names = existing_names[-100:]
+          existing_text = "\n".join(f"- {name}" for name in recent_names)
+          if not existing_text:
+              existing_text = "- No previous projects"
+
+          prompt = f"""
+          Create one original, extremely small beginner-friendly web project.
+
+          Requirements:
+          - It must not duplicate or closely resemble anything in the existing list.
+          - Use only plain HTML, CSS, and JavaScript.
+          - Put everything in one index.html file.
+          - No packages, external APIs, external images, or build tools.
+          - The project must work by opening index.html in a browser.
+          - Keep index.html below 180 lines.
+          - Include a useful interactive feature.
+          - Do not use markdown fences.
+          - Return only valid JSON.
+
+          Required JSON structure:
+          {{
+            "name": "short-kebab-case-name",
+            "title": "Readable Project Title",
+            "description": "One-sentence description.",
+            "index_html": "<!DOCTYPE html>..."
+          }}
+
+          Existing project list:
+          {existing_text}
+          """
+
+          payload = {
+              "model": "openai/gpt-4.1-mini",
+              "messages": [
+                  {
+                      "role": "system",
+                      "content": (
+                          "You create tiny, safe, self-contained educational "
+                          "web projects and return strictly valid JSON."
+                      ),
+                  },
+                  {"role": "user", "content": prompt},
+              ],
+              "temperature": 0.9,
+              "max_tokens": 2500,
+              "response_format": {"type": "json_object"},
+          }
+
+          request = urllib.request.Request(
+              "https://models.github.ai/inference/chat/completions",
+              data=json.dumps(payload).encode("utf-8"),
+              headers={
+                  "Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}",
+                  "Content-Type": "application/json",
+                  "Accept": "application/vnd.github+json",
+              },
+              method="POST",
+          )
+
+          with urllib.request.urlopen(request, timeout=90) as response:
+              api_result = json.loads(response.read().decode("utf-8"))
+
+          content = api_result["choices"][0]["message"]["content"]
+          project = json.loads(content)
+
+          required = {"name", "title", "description", "index_html"}
+          missing = required - project.keys()
+          if missing:
+              raise ValueError(f"Model response is missing fields: {missing}")
+
+          name = re.sub(r"[^a-z0-9-]", "-", project["name"].lower())
+          name = re.sub(r"-+", "-", name).strip("-")
+
+          if not name:
+              raise ValueError("The generated project name is invalid.")
+
+          folder = projects_dir / f"{today}-{name}"
+
+          if folder.exists():
+              raise ValueError(f"Project folder already exists: {folder}")
+
+          html = project["index_html"].strip()
+
+          if not html.lower().startswith("<!doctype html"):
+              raise ValueError("Generated file is not a complete HTML document.")
+
+          folder.mkdir()
+
+          (folder / "index.html").write_text(
+              html + "\n",
+              encoding="utf-8",
+          )
+
+          readme = f"""# {project['title']}
+
+          {project['description']}
+
+          ## Run
+
+          Open `index.html` in a web browser.
+
+          ## Generation
+
+          Generated automatically on {today} using GitHub Models.
+          """
+
+          # Remove indentation introduced by the Python source.
+          readme = "\n".join(line.strip() for line in readme.splitlines())
+          (folder / "README.md").write_text(
+              readme.strip() + "\n",
+              encoding="utf-8",
+          )
+
+          index_path = projects_dir / "README.md"
+
+          if not index_path.exists():
+              index_path.write_text(
+                  "# Daily Mini Projects\n\n"
+                  "Small projects generated as part of a daily building experiment.\n",
+                  encoding="utf-8",
+              )
+
+          with index_path.open("a", encoding="utf-8") as file:
+              file.write(
+                  f"\n- [{today}: {project['title']}]"
+                  f"(./{folder.name}/) — {project['description']}\n"
+              )
+
+          print(f"Created {folder}")
+          PYTHON
+
+      - name: Commit and push
+        env:
+          GIT_AUTHOR_NAME: "zgoldwyn"
+          GIT_AUTHOR_EMAIL: "zachgoldwyn@icloud.com"
+          GIT_COMMITTER_NAME: "zgoldwyn"
+          GIT_COMMITTER_EMAIL: "zachgoldwyn@icloud.com"
+        run: |
+          git config user.name "$GIT_AUTHOR_NAME"
+          git config user.email "$GIT_AUTHOR_EMAIL"
+
+          if git diff --quiet && [ -z "$(git status --porcelain)" ]; then
+            echo "Nothing changed."
+            exit 0
+          fi
+
+          git add projects
+          git commit -m "build: add daily mini project $(date -u +'%Y-%m-%d')"
+          git push
