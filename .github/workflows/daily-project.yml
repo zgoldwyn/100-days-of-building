@@ -63,7 +63,7 @@ jobs:
                   )
 
                   # Limit each README excerpt to control token usage.
-                  readme_excerpt = readme_text[:800].strip()
+                  readme_excerpt = readme_text[:1000].strip()
 
                   existing_projects.append(
                       f"Folder: {project_dir.name}\n"
@@ -77,24 +77,45 @@ jobs:
 
           # Only compare against the most recent 100 projects.
           recent_projects = existing_projects[-100:]
-
           existing_text = "\n\n---\n\n".join(recent_projects)
 
           if not existing_text:
               existing_text = "No previous projects exist."
 
           prompt = f"""
-          Create one original, extremely small beginner-friendly web project.
+          Create one original, polished, small browser project that is fun
+          to explore.
 
           Requirements:
           - Do not duplicate or closely resemble any existing project below.
-          - Compare the title, purpose, interaction, and core mechanic.
+          - Compare the title, purpose, interaction, visual style, and core
+            mechanic against previous projects.
+          - Choose a project type that adds variety: mini-game, puzzle,
+            simulation, creative toy, visualization, productivity tool,
+            learning tool, or utility.
+          - Prefer playful ideas such as reaction games, timing challenges,
+            physics toys, pattern puzzles, drawing tools, memory games,
+            generators, and simulations.
+          - Avoid basic counters, calculators, to-do lists, color pickers,
+            password generators, simple quizzes, and weather-style dashboards
+            unless the concept has a genuinely unusual mechanic.
           - Use only plain HTML, CSS, and JavaScript.
           - Put everything in one index.html file.
-          - Do not use packages, external APIs, external images, or build tools.
-          - The project must work by opening index.html in a web browser.
-          - Keep index.html below 180 lines.
-          - Include at least one useful interactive feature.
+          - Do not use packages, external APIs, external images, CDNs,
+            frameworks, or build tools.
+          - The project must work by opening index.html in a browser.
+          - Keep the scope manageable for one self-contained file.
+          - A typical project may be around 150 to 450 lines, but there is no
+            strict line limit.
+          - Prioritize a complete, working project over hitting a line count.
+          - Include responsive styling and clear instructions.
+          - Include at least two meaningful interactions or mechanics.
+          - For games, include at least one of: scoring, timer, levels,
+            win condition, lose condition, difficulty progression, or replay.
+          - Use localStorage when saved settings, progress, or high scores
+            would meaningfully improve the project.
+          - Make the interface visually distinct from previous projects.
+          - Avoid dangerous, deceptive, offensive, or security-sensitive code.
           - Do not use markdown code fences.
           - Return only valid JSON.
 
@@ -103,6 +124,11 @@ jobs:
             "name": "short-kebab-case-name",
             "title": "Readable Project Title",
             "description": "One-sentence description.",
+            "project_type": "mini-game, puzzle, simulation, creative-toy, visualization, productivity, learning, or utility",
+            "core_mechanics": [
+              "short mechanic name",
+              "another mechanic"
+            ],
             "index_html": "<!DOCTYPE html>..."
           }}
 
@@ -117,8 +143,9 @@ jobs:
                   {
                       "role": "system",
                       "content": (
-                          "You create tiny, safe, self-contained educational "
-                          "web projects and return strictly valid JSON."
+                          "You create polished, safe, self-contained browser "
+                          "projects. Return strictly valid JSON with no "
+                          "markdown fences or extra commentary."
                       ),
                   },
                   {
@@ -126,8 +153,8 @@ jobs:
                       "content": prompt,
                   },
               ],
-              "temperature": 0.9,
-              "max_tokens": 2500,
+              "temperature": 1.0,
+              "max_tokens": 4500,
               "response_format": {
                   "type": "json_object"
               },
@@ -148,7 +175,7 @@ jobs:
 
           with urllib.request.urlopen(
               request,
-              timeout=90,
+              timeout=120,
           ) as response:
               api_result = json.loads(
                   response.read().decode("utf-8")
@@ -161,6 +188,8 @@ jobs:
               "name",
               "title",
               "description",
+              "project_type",
+              "core_mechanics",
               "index_html",
           }
 
@@ -171,10 +200,20 @@ jobs:
                   f"Model response is missing fields: {missing_fields}"
               )
 
+          if not isinstance(project["core_mechanics"], list):
+              raise ValueError(
+                  "core_mechanics must be a JSON array."
+              )
+
+          if len(project["core_mechanics"]) < 2:
+              raise ValueError(
+                  "The project must include at least two core mechanics."
+              )
+
           name = re.sub(
               r"[^a-z0-9-]",
               "-",
-              project["name"].lower(),
+              str(project["name"]).lower(),
           )
 
           name = re.sub(r"-+", "-", name).strip("-")
@@ -191,11 +230,21 @@ jobs:
                   f"Project folder already exists: {folder}"
               )
 
-          html = project["index_html"].strip()
+          html = str(project["index_html"]).strip()
 
           if not html.lower().startswith("<!doctype html"):
               raise ValueError(
                   "Generated file is not a complete HTML document."
+              )
+
+          if "<script" not in html.lower():
+              raise ValueError(
+                  "Generated project does not contain JavaScript."
+              )
+
+          if len(html) < 1000:
+              raise ValueError(
+                  "Generated project is unexpectedly small."
               )
 
           folder.mkdir()
@@ -206,9 +255,16 @@ jobs:
               encoding="utf-8",
           )
 
+          mechanics = ", ".join(
+              str(mechanic)
+              for mechanic in project["core_mechanics"]
+          )
+
           project_readme = (
               f"# {project['title']}\n\n"
               f"{project['description']}\n\n"
+              f"**Type:** {project['project_type']}\n\n"
+              f"**Core mechanics:** {mechanics}\n\n"
               "## Run\n\n"
               "Open `index.html` in a web browser.\n\n"
               "## Generation\n\n"
@@ -227,7 +283,7 @@ jobs:
           if not projects_index.exists():
               projects_index.write_text(
                   "# Daily Mini Projects\n\n"
-                  "Small projects generated as part of a daily "
+                  "Small browser projects generated as part of a daily "
                   "building experiment.\n",
                   encoding="utf-8",
               )
@@ -239,10 +295,13 @@ jobs:
               file.write(
                   f"\n- [{today}: {project['title']}]"
                   f"(./{folder.name}/) — "
-                  f"{project['description']}\n"
+                  f"{project['description']} "
+                  f"_{project['project_type']}_\n"
               )
 
           print(f"Created {folder}")
+          print(f"Project type: {project['project_type']}")
+          print(f"Core mechanics: {mechanics}")
           PYTHON
 
       - name: Commit and push
