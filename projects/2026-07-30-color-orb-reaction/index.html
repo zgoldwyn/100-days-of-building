@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Color Orb Reaction Challenge</title>
+<style>
+  :root {
+    --bg-dark: #121212;
+    --bg-light: #f0f0f0;
+    --orb-size: 80px;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  body {
+    margin: 0;
+    background: var(--bg-dark);
+    color: var(--bg-light);
+    font-family: var(--font-family);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+    box-sizing: border-box;
+    user-select: none;
+  }
+  h1 {
+    margin: 0 0 0.5rem;
+    font-weight: 700;
+  }
+  #instructions {
+    max-width: 400px;
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  #game-area {
+    position: relative;
+    width: 100vw;
+    max-width: 400px;
+    height: 400px;
+    background: #222;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 20px rgb(100 100 255 / 0.6);
+  }
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    width: var(--orb-size);
+    height: var(--orb-size);
+    box-shadow:
+      0 0 15px 3px rgba(255 255 255 / 0.2),
+      inset 0 0 8px 2px rgba(255 255 255 / 0.15);
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.3s ease;
+    user-select: none;
+  }
+  .orb:hover {
+    box-shadow:
+      0 0 25px 5px rgba(255 255 255 / 0.6),
+      inset 0 0 15px 5px rgba(255 255 255 / 0.3);
+  }
+  #status {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  #scoreboard {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+  button {
+    background: #444;
+    color: var(--bg-light);
+    border: none;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+  button:hover {
+    background-color: #666;
+  }
+  #footer {
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: auto;
+  }
+  @media (max-width: 480px) {
+    #game-area {
+      height: 300px;
+      max-width: 300px;
+    }
+    :root {
+      --orb-size: 60px;
+    }
+  }
+</style>
+</head>
+<body>
+<h1>Color Orb Reaction Challenge</h1>
+<div id="instructions">
+Click the <strong>highlighted orb</strong> (bright glowing color) as fast as you can before time hits zero.
+Each correct click adds points and speed!
+You have 30 seconds per round.
+Try to beat your high score!
+</div>
+<div id="status">Time: 30.00s | Score: 0 | Level: 1</div>
+<div id="game-area" aria-label="Color orb reaction game area" role="main"></div>
+<div id="scoreboard">
+  <div>High Score: <span id="high-score">0</span></div>
+  <div>Average Reaction: <span id="avg-reaction">-</span> ms</div>
+</div>
+<button id="start-btn">Start Game</button>
+<div id="footer">&copy; 2024 Color Orb Reaction Challenge</div>
+<script>
+(() => {
+  const gameArea = document.getElementById('game-area');
+  const statusEl = document.getElementById('status');
+  const highScoreEl = document.getElementById('high-score');
+  const avgReactionEl = document.getElementById('avg-reaction');
+  const startBtn = document.getElementById('start-btn');
+
+  // Game config
+  const INITIAL_TIME = 30000; // ms
+  const ORB_COUNT = 6;
+  const ORB_SIZE_VAR = getComputedStyle(document.documentElement).getPropertyValue('--orb-size').trim();
+  const ORB_SIZE = parseInt(ORB_SIZE_VAR);
+  const LEVEL_SCORE_STEP = 5;
+  const BASE_REACT_TIME_LIMIT = 2500; // max ms to click orb
+
+  // Colors for orbs playing range, random but visually distinct
+  const COLORS = [
+    '#ff4f70', // pink-red
+    '#4fffb0', // mint green
+    '#4969ff', // bright blue
+    '#ffd54f', // sunflower yellow
+    '#9b4fff', // purple
+    '#ff7a4f', // orange
+  ];
+
+  let orbs = [];
+  let highlightedOrbIndex = null;
+  let gameTimer = null;
+  let timeLeft = INITIAL_TIME;
+  let score = 0;
+  let level = 1;
+  let reactionTimes = [];
+  let orbAppearTime = 0;
+  let gameRunning = false;
+
+  // Load high score from localStorage
+  let highScore = parseInt(localStorage.getItem('color-orb-highscore') || '0');
+  if(isNaN(highScore)) highScore = 0;
+  highScoreEl.textContent = highScore;
+
+  // Create orbs in game area
+  function createOrbs() {
+    gameArea.innerHTML = '';
+    orbs = [];
+    for(let i=0;i<ORB_COUNT;i++) {
+      const orb = document.createElement('div');
+      orb.classList.add('orb');
+      orb.style.backgroundColor = COLORS[i % COLORS.length];
+      orb.style.border = '3px solid transparent';
+      orb.style.boxShadow = '';
+      orb.setAttribute('data-index', i);
+      orb.setAttribute('tabindex', '0');
+
+      // Position randomly but not overlapping too much in game area
+      const padding = 20;
+      const maxX = gameArea.clientWidth - ORB_SIZE - padding;
+      const maxY = gameArea.clientHeight - ORB_SIZE - padding;
+
+      // We'll arrange orbs roughly in a circle layout for clarity
+      const angle = (i / ORB_COUNT) * 2 * Math.PI - Math.PI/2;
+      const radiusX = maxX / 2.4;
+      const radiusY = maxY /2.4;
+      const centerX = maxX /2 + padding/2;
+      const centerY = maxY /2 + padding/2;
+
+      const posX = Math.round(centerX + radiusX * Math.cos(angle));
+      const posY = Math.round(centerY + radiusY * Math.sin(angle));
+
+      orb.style.left = posX + 'px';
+      orb.style.top = posY + 'px';
+      gameArea.appendChild(orb);
+
+      orbs.push(orb);
+    }
+  }
+
+  // Highlight one orb randomly
+  function highlightRandomOrb() {
+    // remove highlight from old
+    if(highlightedOrbIndex !== null && orbs[highlightedOrbIndex]) {
+      resetOrbStyle(orbs[highlightedOrbIndex]);
+    }
+    const index = Math.floor(Math.random() * ORB_COUNT);
+    const orb = orbs[index];
+    orb.style.border = '3px solid white';
+    orb.style.boxShadow = `0 0 15px 6px ${orb.style.backgroundColor}`;
+    highlightedOrbIndex = index;
+    orbAppearTime = performance.now();
+  }
+
+  // Reset orb style
+  function resetOrbStyle(orb) {
+    orb.style.border = '3px solid transparent';
+    orb.style.boxShadow = '0 0 15px 3px rgba(255 255 255 / 0.2), inset 0 0 8px 2px rgba(255 255 255 / 0.15)';
+  }
+
+  // Update status text
+  function updateStatus() {
+    statusEl.textContent = `Time: ${(timeLeft/1000).toFixed(2)}s | Score: ${score} | Level: ${level}`;
+  }
+
+  // Handle orb click
+  function onOrbClick(e) {
+    if(!gameRunning) return;
+    const index = Number(e.target.getAttribute('data-index'));
+    if(index === highlightedOrbIndex) {
+      // Calculate reaction time
+      const reactionTime = performance.now() - orbAppearTime;
+      // Must be within time limits
+      const reactTimeLimit = Math.max(BASE_REACT_TIME_LIMIT - (level-1)*200, 600);
+      if(reactionTime <= reactTimeLimit) {
+        score++;
+        reactionTimes.push(reactionTime);
+
+        // Level up every LEVEL_SCORE_STEP points
+        if(score % LEVEL_SCORE_STEP === 0) {
+          level++;
+        }
+
+        // Advance to next orb immediately
+        highlightRandomOrb();
+      } else {
+        // Too slow - no points, just highlight new orb
+        highlightRandomOrb();
+      }
+
+      updateStatus();
+    } else {
+      // clicked non-highlight orb - penalty (lose 1 point if possible)
+      if(score > 0) {
+        score--;
+        updateStatus();
+      }
+    }
+  }
+
+  function gameTick() {
+    timeLeft -= 100;
+    if(timeLeft <= 0) {
+      endGame();
+      return;
+    }
+    updateStatus();
+  }
+
+  function startGame() {
+    if(gameRunning) return;
+    score = 0;
+    level = 1;
+    reactionTimes = [];
+    timeLeft = INITIAL_TIME;
+    updateStatus();
+    highlightRandomOrb();
+    gameRunning = true;
+    startBtn.disabled = true;
+    startBtn.textContent = 'Game in Progress...';
+    gameTimer = setInterval(gameTick, 100);
+  }
+
+  function endGame() {
+    gameRunning = false;
+    clearInterval(gameTimer);
+    if(highlightedOrbIndex !== null) {
+      resetOrbStyle(orbs[highlightedOrbIndex]);
+      highlightedOrbIndex = null;
+    }
+    startBtn.disabled = false;
+    startBtn.textContent = 'Start Game';
+
+    // Calculate average reaction time
+    const avgReaction = reactionTimes.length > 0 ? Math.round(reactionTimes.reduce((a,b) => a+b, 0)/reactionTimes.length) : null;
+    avgReactionEl.textContent = avgReaction !== null ? avgReaction : '-';
+  
+    // Check & save high score
+    if(score > highScore) {
+      highScore = score;
+      localStorage.setItem('color-orb-highscore', highScore.toString());
+      highScoreEl.textContent = highScore;
+      alert(`New High Score! Your score: ${score}`);
+    } else {
+      alert(`Time's up! Your score: ${score}`);
+    }
+  }
+
+  // Event listeners
+  function addOrbListeners() {
+    orbs.forEach(orb => {
+      orb.addEventListener('click', onOrbClick);
+      orb.addEventListener('keydown', e => {
+        if(e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          orb.click();
+        }
+      });
+    });
+  }
+
+  // Initialize
+  createOrbs();
+  addOrbListeners();
+  updateStatus();
+
+  startBtn.addEventListener('click', startGame);
+
+  window.addEventListener('resize', () => {
+    // reposition orbs on resize
+    createOrbs();
+    addOrbListeners();
+    if(highlightedOrbIndex !== null) {
+      highlightRandomOrb();
+    }
+  });
+
+})();
+</script>
+</body>
+</html>
