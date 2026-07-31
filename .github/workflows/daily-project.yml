@@ -8,7 +8,6 @@ on:
 
 permissions:
   contents: write
-  models: read
 
 jobs:
   generate-project:
@@ -20,7 +19,9 @@ jobs:
 
       - name: Generate mini project
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LLM_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          LLM_MODEL: "gpt-4.1-mini"
+          LLM_API_URL: "https://api.openai.com/v1/chat/completions"
         run: |
           python3 <<'PYTHON'
           import json
@@ -83,6 +84,23 @@ jobs:
           if not existing_text:
               existing_text = "No previous projects exist."
 
+          api_key = os.environ.get("LLM_API_KEY", "").strip()
+          model_name = os.environ.get("LLM_MODEL", "").strip()
+          api_url = os.environ.get(
+              "LLM_API_URL",
+              "https://api.openai.com/v1/chat/completions",
+          ).strip()
+
+          if not api_key:
+              raise ValueError(
+                  "LLM_API_KEY is not set. Add OPENAI_API_KEY secret."
+              )
+
+          if not model_name:
+              raise ValueError(
+                  "LLM_MODEL is empty."
+              )
+
           prompt = f"""
           Create one original, polished, small browser project that is fun
           to explore.
@@ -139,7 +157,7 @@ jobs:
           """
 
           payload = {
-              "model": "openai/gpt-5-mini",
+              "model": model_name,
               "messages": [
                   {
                       "role": "system",
@@ -162,14 +180,12 @@ jobs:
           }
 
           request = urllib.request.Request(
-              "https://models.github.ai/inference/chat/completions",
+              api_url,
               data=json.dumps(payload).encode("utf-8"),
               headers={
-                  "Authorization": (
-                      f"Bearer {os.environ['GITHUB_TOKEN']}"
-                  ),
+                  "Authorization": "Bearer " + api_key,
                   "Content-Type": "application/json",
-                  "Accept": "application/vnd.github+json",
+                  "Accept": "application/json",
               },
               method="POST",
           )
@@ -183,13 +199,10 @@ jobs:
                       response.read().decode("utf-8")
                   )
           except urllib.error.HTTPError as error:
-              if error.code == 410:
-                  print(
-                      "GitHub Models endpoint is unavailable "
-                      "(HTTP 410); skipping generation."
-                  )
-                  raise SystemExit(0)
-              raise
+              body = error.read().decode("utf-8", errors="ignore")
+              raise RuntimeError(
+                  f"LLM API request failed with HTTP {error.code}: {body}"
+              ) from error
 
           content = api_result["choices"][0]["message"]["content"]
           project = json.loads(content)

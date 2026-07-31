@@ -2,7 +2,7 @@
 
 A daily experiment in building small, self-contained browser projects.
 
-Each day, a GitHub Actions workflow uses GitHub Models to generate one new project using plain HTML, CSS, and JavaScript. Projects may include mini-games, puzzles, simulations, creative tools, visualizations, productivity tools, and other interactive ideas.
+Each day, a GitHub Actions workflow uses an LLM API to generate one new project using plain HTML, CSS, and JavaScript. Projects may include mini-games, puzzles, simulations, creative tools, visualizations, productivity tools, and other interactive ideas.
 
 ## Goals
 
@@ -35,9 +35,13 @@ The workflow in `.github/workflows/daily-project.yml`:
 4. Updates the project index
 5. Commits the new project to the repository
 
+It expects these workflow settings:
+- Repository secret: `OPENAI_API_KEY`
+- Model env var in workflow: `LLM_MODEL` (default `gpt-4.1-mini`)
+
 ## AI Disclosure
 
-The initial versions of these projects are generated automatically using GitHub Models. I review, test, modify, and improve projects when possible.
+The initial versions of these projects are generated automatically using a configured LLM model. I review, test, modify, and improve projects when possible.
 
 ## Project Index
 
