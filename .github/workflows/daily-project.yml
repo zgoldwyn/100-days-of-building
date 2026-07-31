@@ -8,7 +8,6 @@ on:
 
 permissions:
   contents: write
-  models: read
 
 jobs:
   generate-project:
@@ -20,7 +19,8 @@ jobs:
 
       - name: Generate mini project
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          AI_MODELS: ${{ vars.AI_MODELS }}
         run: |
           python3 <<'PYTHON'
           import json
@@ -139,7 +139,6 @@ jobs:
           """
 
           payload = {
-              "model": "openai/gpt-5",
               "messages": [
                   {
                       "role": "system",
@@ -156,40 +155,67 @@ jobs:
               ],
               "temperature": 1.0,
               "max_tokens": 4500,
-              "response_format": {
-                  "type": "json_object"
-              },
           }
 
-          request = urllib.request.Request(
-              "https://models.github.ai/inference/chat/completions",
-              data=json.dumps(payload).encode("utf-8"),
-              headers={
-                  "Authorization": (
-                      f"Bearer {os.environ['GITHUB_TOKEN']}"
-                  ),
-                  "Content-Type": "application/json",
-                  "Accept": "application/vnd.github+json",
-              },
-              method="POST",
-          )
+          api_key = os.environ.get("OPENROUTER_API_KEY", "").strip()
+          if not api_key:
+              print(
+                  "OPENROUTER_API_KEY is not configured; "
+                  "skipping generation."
+              )
+              raise SystemExit(0)
 
-          try:
-              with urllib.request.urlopen(
-                  request,
-                  timeout=120,
-              ) as response:
-                  api_result = json.loads(
-                      response.read().decode("utf-8")
+          configured_models = os.environ.get("AI_MODELS", "").strip()
+          if configured_models:
+              model_candidates = [
+                  model.strip()
+                  for model in configured_models.split(",")
+                  if model.strip()
+              ]
+          else:
+              model_candidates = [
+                  "meta-llama/llama-3.1-8b-instruct:free",
+                  "openai/gpt-4o-mini",
+              ]
+
+          api_result = None
+          model_used = None
+          api_errors = []
+
+          for model_name in model_candidates:
+              payload["model"] = model_name
+              request = urllib.request.Request(
+                  "https://openrouter.ai/api/v1/chat/completions",
+                  data=json.dumps(payload).encode("utf-8"),
+                  headers={
+                      "Authorization": "Bearer " + api_key,
+                      "Content-Type": "application/json",
+                  },
+                  method="POST",
+              )
+
+              try:
+                  with urllib.request.urlopen(
+                      request,
+                      timeout=120,
+                  ) as response:
+                      api_result = json.loads(
+                          response.read().decode("utf-8")
+                      )
+                      model_used = model_name
+                      break
+              except urllib.error.HTTPError as error:
+                  api_errors.append(
+                      f"{model_name}: HTTP {error.code}"
                   )
-          except urllib.error.HTTPError as error:
-              if error.code == 410:
-                  print(
-                      "GitHub Models endpoint is unavailable "
-                      "(HTTP 410); skipping generation."
-                  )
-                  raise SystemExit(0)
-              raise
+                  continue
+
+          if api_result is None:
+              print(
+                  "Model generation failed for all candidates: "
+                  + ", ".join(api_errors)
+              )
+              raise SystemExit(0)
 
           content = api_result["choices"][0]["message"]["content"]
           project = json.loads(content)
@@ -279,7 +305,7 @@ jobs:
               "Open `index.html` in a web browser.\n\n"
               "## Generation\n\n"
               f"Generated automatically on {today} "
-              "using GitHub Models.\n"
+              f"using {model_used} via OpenRouter.\n"
           )
 
           readme_file = folder / "README.md"
