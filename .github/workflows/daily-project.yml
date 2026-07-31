@@ -27,6 +27,7 @@ jobs:
           import os
           import pathlib
           import re
+          import urllib.error
           import urllib.request
           from datetime import datetime, timezone
 
@@ -173,13 +174,22 @@ jobs:
               method="POST",
           )
 
-          with urllib.request.urlopen(
-              request,
-              timeout=120,
-          ) as response:
-              api_result = json.loads(
-                  response.read().decode("utf-8")
-              )
+          try:
+              with urllib.request.urlopen(
+                  request,
+                  timeout=120,
+              ) as response:
+                  api_result = json.loads(
+                      response.read().decode("utf-8")
+                  )
+          except urllib.error.HTTPError as error:
+              if error.code == 410:
+                  print(
+                      "GitHub Models endpoint is unavailable "
+                      "(HTTP 410); skipping generation."
+                  )
+                  raise SystemExit(0)
+              raise
 
           content = api_result["choices"][0]["message"]["content"]
           project = json.loads(content)
