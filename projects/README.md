@@ -15,3 +15,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-08-04: Bubble Popping Quest](./2026-08-04-bubble-popping-quest/) — A delightful mini-game where you pop bubbles to earn points while avoiding the pesky spiky ones. _mini-game_
 
 - [2026-08-05: Creative Doodle Tile Puzzle](./2026-08-05-creative-doodle-tile-puzzle/) — A fun puzzle game where you drag and drop doodle tiles to match a target image. _puzzle_
+
+- [2026-08-06: Dynamic Emoji Animal Drum](./2026-08-06-dynamic-emoji-animal-drum/) — Create rhythmic music by tapping on animated animal emojis that play unique drum sounds. _creative-toy_
