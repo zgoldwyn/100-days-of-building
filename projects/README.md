@@ -17,3 +17,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-08-05: Creative Doodle Tile Puzzle](./2026-08-05-creative-doodle-tile-puzzle/) — A fun puzzle game where you drag and drop doodle tiles to match a target image. _puzzle_
 
 - [2026-08-06: Dynamic Emoji Animal Drum](./2026-08-06-dynamic-emoji-animal-drum/) — Create rhythmic music by tapping on animated animal emojis that play unique drum sounds. _creative-toy_
+
+- [2026-08-08: Color Swap Squares](./2026-08-08-color-swap-squares/) — A fun timing game where you swap colors of squares to match a target color before the timer runs out. _mini-game_
