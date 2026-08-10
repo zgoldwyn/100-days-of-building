@@ -21,3 +21,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-08-08: Color Swap Squares](./2026-08-08-color-swap-squares/) — A fun timing game where you swap colors of squares to match a target color before the timer runs out. _mini-game_
 
 - [2026-08-09: Flying Pet Challenge](./2026-08-09-flying-pet-challenge/) — Navigate your flying pet through clouds while collecting stars and avoiding obstacles. _mini-game_
+
+- [2026-08-10: Catapult Catch Game](./2026-08-10-catapult-catch-game/) — Use your catapult to catch falling objects while avoiding bombs in this fun timing challenge. _mini-game_
