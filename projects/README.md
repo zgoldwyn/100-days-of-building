@@ -23,3 +23,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-08-09: Flying Pet Challenge](./2026-08-09-flying-pet-challenge/) — Navigate your flying pet through clouds while collecting stars and avoiding obstacles. _mini-game_
 
 - [2026-08-10: Catapult Catch Game](./2026-08-10-catapult-catch-game/) — Use your catapult to catch falling objects while avoiding bombs in this fun timing challenge. _mini-game_
+
+- [2026-08-11: Whimsical Plant Garden](./2026-08-11-whimsical-plant-garden/) — Grow and arrange a vibrant garden of whimsical plants while managing their needs and aesthetics. _simulation_
