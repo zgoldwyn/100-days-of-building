@@ -25,3 +25,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-08-10: Catapult Catch Game](./2026-08-10-catapult-catch-game/) — Use your catapult to catch falling objects while avoiding bombs in this fun timing challenge. _mini-game_
 
 - [2026-08-11: Whimsical Plant Garden](./2026-08-11-whimsical-plant-garden/) — Grow and arrange a vibrant garden of whimsical plants while managing their needs and aesthetics. _simulation_
+
+- [2026-08-12: Color Matching Rolling Balls](./2026-08-12-color-matching-rolling-balls/) — Navigate rolling balls to match target colors using skill and timing. _mini-game_
