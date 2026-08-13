@@ -27,3 +27,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-08-11: Whimsical Plant Garden](./2026-08-11-whimsical-plant-garden/) — Grow and arrange a vibrant garden of whimsical plants while managing their needs and aesthetics. _simulation_
 
 - [2026-08-12: Color Matching Rolling Balls](./2026-08-12-color-matching-rolling-balls/) — Navigate rolling balls to match target colors using skill and timing. _mini-game_
+
+- [2026-08-13: Gravity Flow Puzzle](./2026-08-13-gravity-flow-puzzle/) — A captivating puzzle game where you rearrange tiles to create a path for flowing water to reach the plant. _puzzle_
