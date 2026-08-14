@@ -29,3 +29,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-08-12: Color Matching Rolling Balls](./2026-08-12-color-matching-rolling-balls/) — Navigate rolling balls to match target colors using skill and timing. _mini-game_
 
 - [2026-08-13: Gravity Flow Puzzle](./2026-08-13-gravity-flow-puzzle/) — A captivating puzzle game where you rearrange tiles to create a path for flowing water to reach the plant. _puzzle_
+
+- [2026-08-14: Whirlwind Collector Challenge](./2026-08-14-whirlwind-collector-challenge/) — A fast-paced game where you control a whirlwind to collect items while avoiding obstacles. _mini-game_
