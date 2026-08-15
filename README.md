@@ -41,8 +41,11 @@ Configure repository secrets/variables for automation:
 
 ## AI Disclosure
 
-The initial versions of these projects are generated automatically using OpenRouter models (defaulting to a free model, with a cheap fallback). I review, test, modify, and improve projects when possible.
+The initial versions of these projects are generated automatically using OpenRouter models (defaulting to a free model, with a cheap fallback). I review, test, and comment observations on projects when possible.
 
 ## Project Index
 
 See [`projects/README.md`](./projects/README.md) for the complete list of generated projects.
+
+## Best Game:
+The best game I have discovered so far is the Bouncing Ball Challenge, made on 8/2/2026. It is the most interactive, playable, and while it goes forever, is entertaining unlike many other projects that have been created, which either don't work or just are flat out bad. 
