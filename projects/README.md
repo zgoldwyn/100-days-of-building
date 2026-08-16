@@ -33,3 +33,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-08-14: Whirlwind Collector Challenge](./2026-08-14-whirlwind-collector-challenge/) — A fast-paced game where you control a whirlwind to collect items while avoiding obstacles. _mini-game_
 
 - [2026-08-15: Whimsical Doodle Color Blast](./2026-08-15-whimsical-doodle-color-blast/) — A fun creative toy that lets you draw colorful doodles that explode into vibrant patterns when clicked. _creative-toy_
+
+- [2026-08-16: Fluffy Cloud Jump Challenge](./2026-08-16-fluffy-cloud-jump/) — Jump from fluffy cloud to fluffy cloud while avoiding lightning bolts and collecting stars for points. _mini-game_
