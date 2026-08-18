@@ -37,3 +37,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-08-16: Fluffy Cloud Jump Challenge](./2026-08-16-fluffy-cloud-jump/) — Jump from fluffy cloud to fluffy cloud while avoiding lightning bolts and collecting stars for points. _mini-game_
 
 - [2026-08-17: Color Dance Party](./2026-08-17-color-dance-party/) — Tap the colorful beats in sync with the music to earn points while avoiding mismatched colors. _mini-game_
+
+- [2026-08-18: Music Matching Mosaic](./2026-08-18-music-matching-mosaic/) — Create beautiful patterns by tapping on tiles that play musical notes while matching the melody. _creative-toy_
