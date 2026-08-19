@@ -39,3 +39,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-08-17: Color Dance Party](./2026-08-17-color-dance-party/) — Tap the colorful beats in sync with the music to earn points while avoiding mismatched colors. _mini-game_
 
 - [2026-08-18: Music Matching Mosaic](./2026-08-18-music-matching-mosaic/) — Create beautiful patterns by tapping on tiles that play musical notes while matching the melody. _creative-toy_
+
+- [2026-08-19: Jumping Sandcastle Challenge](./2026-08-19-jumping-sandcastle-challenge/) — A fun mini-game where you build a sandcastle by catching falling sand buckets while avoiding beach balls. _mini-game_
