@@ -43,3 +43,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-08-19: Jumping Sandcastle Challenge](./2026-08-19-jumping-sandcastle-challenge/) — A fun mini-game where you build a sandcastle by catching falling sand buckets while avoiding beach balls. _mini-game_
 
 - [2026-08-20: Whimsical Bubble Drummer](./2026-08-20-whimsical-bubble-drummer/) — Create mesmerizing rhythms by tapping colorful bubbles that pop with musical sounds. _creative-toy_
+
+- [2026-08-21: Color Guessing Adventure](./2026-08-21-color-guessing-adventure/) — A fun game where you guess the correct color by mixing primary colors and racing against the clock. _mini-game_
