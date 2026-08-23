@@ -47,3 +47,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-08-21: Color Guessing Adventure](./2026-08-21-color-guessing-adventure/) — A fun game where you guess the correct color by mixing primary colors and racing against the clock. _mini-game_
 
 - [2026-08-22: Whimsical Word Spiral](./2026-08-22-whimsical-word-spiral/) — Create and share your own spiraling words while racing against a timer to match a growing sequence. _mini-game_
+
+- [2026-08-23: Bubble Splash Challenge](./2026-08-23-bubble-splash-challenge/) — Pop clusters of colorful bubbles before they disappear to earn points. _mini-game_
