@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balloon Burst Parade</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #87CEEB;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #game-container {
+            position: relative;
+            width: 400px;
+            height: 600px;
+            border: 2px solid #333;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+        .balloon {
+            position: absolute;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .balloon:hover {
+            transform: scale(1.1);
+        }
+        #score {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 24px;
+            color: #333;
+        }
+        #start-btn, #restart-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <div id="score">Score: 0</div>
+    </div>
+    <button id="start-btn">Start Game</button>
+    <button id="restart-btn" style="display:none;">Restart Game</button>
+    <script>
+        const container = document.getElementById('game-container');
+        const scoreDisplay = document.getElementById('score');
+        const startButton = document.getElementById('start-btn');
+        const restartButton = document.getElementById('restart-btn');
+        let score = 0;
+        let gameInterval;
+
+        function startGame() {
+            score = 0;
+            scoreDisplay.innerText = 'Score: ' + score;
+            startButton.style.display = 'none';
+            restartButton.style.display = 'none';
+            gameInterval = setInterval(createBalloon, 1000);
+        }
+
+        function createBalloon() {
+            const balloon = document.createElement('div');
+            balloon.classList.add('balloon');
+            balloon.style.width = '50px';
+            balloon.style.height = '80px';
+            balloon.style.backgroundColor = getRandomColor();
+            balloon.style.bottom = '0px';
+            balloon.style.left = Math.random() * (container.offsetWidth - 50) + 'px';
+            container.appendChild(balloon);
+            balloon.addEventListener('click', () => popBalloon(balloon));
+            let riseInterval = setInterval(() => {
+                if (balloon.offsetTop <= -80) {
+                    clearInterval(riseInterval);
+                    container.removeChild(balloon);
+                } else {
+                    balloon.style.bottom = (parseInt(balloon.style.bottom) + 2) + 'px';
+                }
+            }, 20);
+        }
+
+        function popBalloon(balloon) {
+            if (balloon.style.backgroundColor !== 'black') {
+                score += 10;
+                scoreDisplay.innerText = 'Score: ' + score;
+                balloon.remove();
+            } else {
+                endGame();
+            }
+        }
+
+        function endGame() {
+            clearInterval(gameInterval);
+            alert('Game over! Your score: ' + score);
+            restartButton.style.display = 'block';
+        }
+
+        function getRandomColor() {
+            const colors = ['red', 'blue', 'green', 'yellow', 'orange'];
+            return Math.random() < 0.2 ? 'black' : colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        startButton.addEventListener('click', startGame);
+        restartButton.addEventListener('click', () => { location.reload(); });
+    </script>
+</body>
+</html>
