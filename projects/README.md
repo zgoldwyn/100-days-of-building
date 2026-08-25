@@ -51,3 +51,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-08-23: Bubble Splash Challenge](./2026-08-23-bubble-splash-challenge/) — Pop clusters of colorful bubbles before they disappear to earn points. _mini-game_
 
 - [2026-08-24: Balloon Burst Parade](./2026-08-24-balloon-burst-parade/) — A whimsical mini-game where you pop balloons to create a colorful parade while avoiding black balloons. _mini-game_
+
+- [2026-08-25: Color Quest Wizard](./2026-08-25-color-quest-wizard/) — Embark on a colorful adventure where you match colors to cast spells and defeat the shadow specters! _mini-game_
