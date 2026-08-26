@@ -53,3 +53,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-08-24: Balloon Burst Parade](./2026-08-24-balloon-burst-parade/) — A whimsical mini-game where you pop balloons to create a colorful parade while avoiding black balloons. _mini-game_
 
 - [2026-08-25: Color Quest Wizard](./2026-08-25-color-quest-wizard/) — Embark on a colorful adventure where you match colors to cast spells and defeat the shadow specters! _mini-game_
+
+- [2026-08-26: Whimsical Snowflake Factory](./2026-08-26-whimsical-snowflake-factory/) — Create unique, intricate snowflakes by combining various designs in a playful factory environment. _creative-toy_
