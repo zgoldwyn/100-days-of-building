@@ -55,3 +55,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-08-25: Color Quest Wizard](./2026-08-25-color-quest-wizard/) — Embark on a colorful adventure where you match colors to cast spells and defeat the shadow specters! _mini-game_
 
 - [2026-08-26: Whimsical Snowflake Factory](./2026-08-26-whimsical-snowflake-factory/) — Create unique, intricate snowflakes by combining various designs in a playful factory environment. _creative-toy_
+
+- [2026-08-27: Snowball Throwing Challenge](./2026-08-27-snowball-throwing-challenge/) — Test your aim by hurling snowballs at moving targets and rack up points before time runs out. _mini-game_
