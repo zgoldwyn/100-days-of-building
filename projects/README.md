@@ -57,3 +57,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-08-26: Whimsical Snowflake Factory](./2026-08-26-whimsical-snowflake-factory/) — Create unique, intricate snowflakes by combining various designs in a playful factory environment. _creative-toy_
 
 - [2026-08-27: Snowball Throwing Challenge](./2026-08-27-snowball-throwing-challenge/) — Test your aim by hurling snowballs at moving targets and rack up points before time runs out. _mini-game_
+
+- [2026-08-28: Dynamic Sand Doodle](./2026-08-28-dynamic-sand-doodle/) — Create mesmerizing patterns by simulating sand falling through a series of obstacles, allowing for artistic exploration. _creative-toy_
