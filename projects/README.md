@@ -61,3 +61,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-08-28: Dynamic Sand Doodle](./2026-08-28-dynamic-sand-doodle/) — Create mesmerizing patterns by simulating sand falling through a series of obstacles, allowing for artistic exploration. _creative-toy_
 
 - [2026-08-29: Whimsical Flower Painter](./2026-08-29-whimsical-flower-painter/) — Create and customize beautiful flowers using a playful painting tool that animates your designs. _creative-toy_
+
+- [2026-08-30: Color Dash Bottle Catch](./2026-08-30-color-dash-bottle-catch/) — Catch falling colored bottles that match the color shown at the top while racing against time. _mini-game_
