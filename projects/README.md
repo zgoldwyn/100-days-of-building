@@ -69,3 +69,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-09-01: Playful Sound Wave Creator](./2026-09-01-playful-sound-wave-creator/) — Compose unique sound waves by drawing with your mouse, adjusting frequency and amplitude in real-time. _creative-toy_
 
 - [2026-09-02: Color Chameleon Challenge](./2026-09-02-color-chameleon-challenge/) — A fun mini-game where you control a chameleon that changes color to match incoming bugs while racing against time. _mini-game_
+
+- [2026-09-03: Whimsical Sound Inverter](./2026-09-03-whimsical-sound-inverter/) — Transform your spoken words into playful sounds and reverse them for a fun audio experience. _creative-toy_
