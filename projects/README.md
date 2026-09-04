@@ -71,3 +71,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-09-02: Color Chameleon Challenge](./2026-09-02-color-chameleon-challenge/) — A fun mini-game where you control a chameleon that changes color to match incoming bugs while racing against time. _mini-game_
 
 - [2026-09-03: Whimsical Sound Inverter](./2026-09-03-whimsical-sound-inverter/) — Transform your spoken words into playful sounds and reverse them for a fun audio experience. _creative-toy_
+
+- [2026-09-04: Whimsical Bubble Painting](./2026-09-04-whimsical-bubble-painting/) — Create colorful bubble art by blowing paint bubbles and popping them to unveil vibrant patterns. _creative-toy_
