@@ -13,3 +13,7 @@ Open `index.html` in a web browser.
 ## Generation
 
 Generated automatically on 2026-08-25 using openai/gpt-4o-mini via OpenRouter.
+
+## Notes
+
+This game is actually not too bad!

@@ -13,3 +13,6 @@ Open `index.html` in a web browser.
 ## Generation
 
 Generated automatically on 2026-09-03 using openai/gpt-4o-mini via OpenRouter.
+
+## Notes
+This is pointless and unfunctional. Interesting idea to use audio recording, looks to be one of the first to do so. 

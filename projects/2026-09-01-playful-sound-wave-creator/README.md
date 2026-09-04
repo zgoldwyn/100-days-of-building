@@ -13,3 +13,7 @@ Open `index.html` in a web browser.
 ## Generation
 
 Generated automatically on 2026-09-01 using openai/gpt-4o-mini via OpenRouter.
+
+## Notes
+
+Interesting. The Sound waves play and drawing works but they cannot be linked. The changing frequency does change the sound outputted tho. Close!
