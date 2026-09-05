@@ -73,3 +73,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-09-03: Whimsical Sound Inverter](./2026-09-03-whimsical-sound-inverter/) — Transform your spoken words into playful sounds and reverse them for a fun audio experience. _creative-toy_
 
 - [2026-09-04: Whimsical Bubble Painting](./2026-09-04-whimsical-bubble-painting/) — Create colorful bubble art by blowing paint bubbles and popping them to unveil vibrant patterns. _creative-toy_
+
+- [2026-09-05: Charming Forest Explorer](./2026-09-05-charming-forest-explorer/) — Navigate through a whimsical forest, collecting magical items and solving nature-themed puzzles! _mini-game_
