@@ -77,3 +77,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-09-05: Charming Forest Explorer](./2026-09-05-charming-forest-explorer/) — Navigate through a whimsical forest, collecting magical items and solving nature-themed puzzles! _mini-game_
 
 - [2026-09-07: Whimsical Jellybean Racer](./2026-09-07-whimsical-jellybean-racer/) — A delightful mini-game where you race jellybeans down a winding track, dodging obstacles and collecting candies for points. _mini-game_
+
+- [2026-09-08: Fractal Bubble Explorer](./2026-09-08-fractal-bubble-explorer/) — Dive into a mesmerizing world of fractal bubbles where you can create, pop, and explore intricate patterns. _creative-toy_
