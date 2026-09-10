@@ -81,3 +81,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-09-08: Fractal Bubble Explorer](./2026-09-08-fractal-bubble-explorer/) — Dive into a mesmerizing world of fractal bubbles where you can create, pop, and explore intricate patterns. _creative-toy_
 
 - [2026-09-09: Color Catch Challenge](./2026-09-09-color-catch-challenge/) — Catch colorful falling shapes that match the displayed target color while racing against time! _mini-game_
+
+- [2026-09-10: Whimsical Shape Creator](./2026-09-10-whimsical-shape-creator/) — Design your own whimsical shapes by combining basic geometric forms, unleashing your creativity in a playful environment. _creative-toy_
