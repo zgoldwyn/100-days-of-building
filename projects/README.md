@@ -85,3 +85,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-09-10: Whimsical Shape Creator](./2026-09-10-whimsical-shape-creator/) — Design your own whimsical shapes by combining basic geometric forms, unleashing your creativity in a playful environment. _creative-toy_
 
 - [2026-09-11: Skyward Rocket Challenge](./2026-09-11-skyward-rocket-challenge/) — Launch your rocket skyward while collecting stars and avoiding clouds to achieve the highest score. _mini-game_
+
+- [2026-09-13: Whimsical Painting Puzzle](./2026-09-13-whimsical-painting-puzzle/) — A playful puzzle game where you rearrange segments of a colorful painting to complete the image before time runs out. _puzzle_
