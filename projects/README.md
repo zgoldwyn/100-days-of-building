@@ -89,3 +89,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-09-13: Whimsical Painting Puzzle](./2026-09-13-whimsical-painting-puzzle/) — A playful puzzle game where you rearrange segments of a colorful painting to complete the image before time runs out. _puzzle_
 
 - [2026-09-14: Whimsical Bubble Catcher](./2026-09-14-whimsical-bubble-catcher/) — A delightful mini-game where you catch colorful bubbles while avoiding mischievous black bubbles that pop on touch. _mini-game_
+
+- [2026-09-15: Whimsical Ice Cream Creator](./2026-09-15-whimsical-ice-cream-creator/) — Design your own unique ice cream concoctions and share them on a virtual cone. _creative-toy_
