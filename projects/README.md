@@ -93,3 +93,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-09-15: Whimsical Ice Cream Creator](./2026-09-15-whimsical-ice-cream-creator/) — Design your own unique ice cream concoctions and share them on a virtual cone. _creative-toy_
 
 - [2026-09-16: Symphonic Doodle Waves](./2026-09-16-symphonic-doodle-waves/) — Draw freely on the canvas to create mesmerizing wave patterns that produce musical sounds based on your strokes. _creative-toy_
+
+- [2026-09-17: Whimsical Ice Racer](./2026-09-17-whimsical-ice-racer/) — Race colorful ice skaters across a snowy track while collecting gems and avoiding snowmen! _mini-game_
