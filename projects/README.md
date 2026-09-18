@@ -95,3 +95,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-09-16: Symphonic Doodle Waves](./2026-09-16-symphonic-doodle-waves/) — Draw freely on the canvas to create mesmerizing wave patterns that produce musical sounds based on your strokes. _creative-toy_
 
 - [2026-09-17: Whimsical Ice Racer](./2026-09-17-whimsical-ice-racer/) — Race colorful ice skaters across a snowy track while collecting gems and avoiding snowmen! _mini-game_
+
+- [2026-09-18: Whimsical Snowflake Symphony](./2026-09-18-whimsical-snowflake-symphony/) — Create and manipulate falling snowflakes while composing a beautiful winter melody. _creative-toy_
