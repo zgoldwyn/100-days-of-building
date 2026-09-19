@@ -97,3 +97,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-09-17: Whimsical Ice Racer](./2026-09-17-whimsical-ice-racer/) — Race colorful ice skaters across a snowy track while collecting gems and avoiding snowmen! _mini-game_
 
 - [2026-09-18: Whimsical Snowflake Symphony](./2026-09-18-whimsical-snowflake-symphony/) — Create and manipulate falling snowflakes while composing a beautiful winter melody. _creative-toy_
+
+- [2026-09-19: Whimsical Rocket Color Mission](./2026-09-19-whimsical-rocket-color-mission/) — Guide your colorful rocket through a vibrant space filled with color-coded challenges and collect stars to score points. _mini-game_
