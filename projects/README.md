@@ -101,3 +101,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-09-19: Whimsical Rocket Color Mission](./2026-09-19-whimsical-rocket-color-mission/) — Guide your colorful rocket through a vibrant space filled with color-coded challenges and collect stars to score points. _mini-game_
 
 - [2026-09-20: Dynamic Bubble Puzzle](./2026-09-20-dynamic-bubble-puzzle/) — A playful puzzle game where you strategically pop neighboring bubbles of the same color to clear the board and earn points. _puzzle_
+
+- [2026-09-21: Whimsical Plant Puzzle](./2026-09-21-whimsical-plant-puzzle/) — A charming puzzle game where you rotate plant tiles to match their natural growth patterns before the time runs out. _puzzle_
