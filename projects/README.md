@@ -105,3 +105,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-09-21: Whimsical Plant Puzzle](./2026-09-21-whimsical-plant-puzzle/) — A charming puzzle game where you rotate plant tiles to match their natural growth patterns before the time runs out. _puzzle_
 
 - [2026-09-23: Glowing Spring Tap Dance](./2026-09-23-glowing-spring-tap-dance/) — Dance to the rhythm by tapping glowing springs that change color with time, testing your timing and coordination skills. _mini-game_
+
+- [2026-09-24: Color Swipe Symphony](./2026-09-24-color-swipe-symphony/) — Create a magical melody by swiping over colorful panels that each play a different note. _creative-toy_
