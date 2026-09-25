@@ -107,3 +107,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-09-23: Glowing Spring Tap Dance](./2026-09-23-glowing-spring-tap-dance/) — Dance to the rhythm by tapping glowing springs that change color with time, testing your timing and coordination skills. _mini-game_
 
 - [2026-09-24: Color Swipe Symphony](./2026-09-24-color-swipe-symphony/) — Create a magical melody by swiping over colorful panels that each play a different note. _creative-toy_
+
+- [2026-09-25: Whimsical Sky Artist](./2026-09-25-whimsical-sky-artist/) — Create mesmerizing cloud art in the sky by painting with a virtual brush and adding colorful stars. _creative-toy_
