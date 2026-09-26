@@ -109,3 +109,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-09-24: Color Swipe Symphony](./2026-09-24-color-swipe-symphony/) — Create a magical melody by swiping over colorful panels that each play a different note. _creative-toy_
 
 - [2026-09-25: Whimsical Sky Artist](./2026-09-25-whimsical-sky-artist/) — Create mesmerizing cloud art in the sky by painting with a virtual brush and adding colorful stars. _creative-toy_
+
+- [2026-09-26: Whimsical Seed Planting Adventure](./2026-09-26-whimsical-seed-planting/) — Grow a delightful garden by planting seeds, watering them, and watching them flourish into playful flowers. _simulation_
