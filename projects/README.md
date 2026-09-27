@@ -111,3 +111,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-09-25: Whimsical Sky Artist](./2026-09-25-whimsical-sky-artist/) — Create mesmerizing cloud art in the sky by painting with a virtual brush and adding colorful stars. _creative-toy_
 
 - [2026-09-26: Whimsical Seed Planting Adventure](./2026-09-26-whimsical-seed-planting/) — Grow a delightful garden by planting seeds, watering them, and watching them flourish into playful flowers. _simulation_
+
+- [2026-09-27: Color Blob Challenge](./2026-09-27-color-blob-challenge/) — A fast-paced game where you tap on moving color blobs to score points, while avoiding black blobs that deduct points. _mini-game_
