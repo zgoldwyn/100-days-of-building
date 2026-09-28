@@ -113,3 +113,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-09-26: Whimsical Seed Planting Adventure](./2026-09-26-whimsical-seed-planting/) — Grow a delightful garden by planting seeds, watering them, and watching them flourish into playful flowers. _simulation_
 
 - [2026-09-27: Color Blob Challenge](./2026-09-27-color-blob-challenge/) — A fast-paced game where you tap on moving color blobs to score points, while avoiding black blobs that deduct points. _mini-game_
+
+- [2026-09-28: Jellyfish Escape Adventure](./2026-09-28-jellyfish-escape-adventure/) — Navigate your jellyfish through a vibrant underwater world while avoiding obstacles and collecting glowing orbs for points. _mini-game_
