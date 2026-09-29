@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whimsical Rocket Paint Party</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        canvas {
+            border: 2px solid #000;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        #score {
+            font-size: 20px;
+        }
+        #start {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Whimsical Rocket Paint Party</h1>
+    <canvas id="canvas" width="600" height="400"></canvas>
+    <button id="start">Start Game</button>
+    <div id="score">Score: 0</div>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const startButton = document.getElementById('start');
+        const scoreDisplay = document.getElementById('score');
+        let score = 0;
+        let isGameRunning = false;
+        let rockets = [];
+
+        startButton.addEventListener('click', startGame);
+        canvas.addEventListener('click', launchRocket);
+
+        function startGame() {
+            score = 0;
+            rockets = [];
+            isGameRunning = true;
+            scoreDisplay.textContent = 'Score: ' + score;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            requestAnimationFrame(gameLoop);
+        }
+
+        function launchRocket(event) {
+            if (!isGameRunning) return;
+            const rect = canvas.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            rockets.push({ x: x, y: y, vy: -5 });
+        }
+
+        function gameLoop() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawClouds();
+            updateRockets();
+            drawRockets();
+            if (isGameRunning) {
+                requestAnimationFrame(gameLoop);
+            }
+        }
+
+        function drawRockets() {
+            ctx.fillStyle = 'red';
+            rockets.forEach(rocket => {
+                ctx.beginPath();
+                ctx.arc(rocket.x, rocket.y, 5, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.closePath();
+                if (rocket.y < -5) {
+                    rocket.y = canvas.height + 5;
+                    rocket.x = Math.random() * canvas.width;
+                    score += 10;
+                }
+            });
+        }
+
+        function updateRockets() {
+            rockets.forEach(rocket => {
+                rocket.y += rocket.vy;
+                if (rocket.y < 0) {
+                    rocket.y = canvas.height + 5;
+                    rocket.x = Math.random() * canvas.width;
+                }
+            });
+            scoreDisplay.textContent = 'Score: ' + score;
+        }
+
+        function drawClouds() {
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 100, canvas.width, 50);
+        }
+    </script>
+</body>
+</html>

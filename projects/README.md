@@ -115,3 +115,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-09-27: Color Blob Challenge](./2026-09-27-color-blob-challenge/) — A fast-paced game where you tap on moving color blobs to score points, while avoiding black blobs that deduct points. _mini-game_
 
 - [2026-09-28: Jellyfish Escape Adventure](./2026-09-28-jellyfish-escape-adventure/) — Navigate your jellyfish through a vibrant underwater world while avoiding obstacles and collecting glowing orbs for points. _mini-game_
+
+- [2026-09-29: Whimsical Rocket Paint Party](./2026-09-29-whimsical-rocket-paint-party/) — A playful game where you launch rockets to splatter paint on a canvas and create beautiful artwork while avoiding clouds. _mini-game_
