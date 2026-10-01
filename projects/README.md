@@ -119,3 +119,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-09-29: Whimsical Rocket Paint Party](./2026-09-29-whimsical-rocket-paint-party/) — A playful game where you launch rockets to splatter paint on a canvas and create beautiful artwork while avoiding clouds. _mini-game_
 
 - [2026-09-30: Color Pattern Tile Puzzle](./2026-09-30-color-pattern-tile-puzzle/) — Rearrange colorful tiles to match a target pattern in a fun and engaging puzzle. _puzzle_
+
+- [2026-10-01: Color Jump Challenge](./2026-10-01-color-jump-challenge/) — Jump over color obstacles to score points while matching your character's color to progress through levels. _mini-game_
