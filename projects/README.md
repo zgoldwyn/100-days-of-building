@@ -125,3 +125,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-10-02: Whimsical Connector Challenge](./2026-10-02-whimsical-connector-challenge/) — Connect colorful dots before they disappear while managing a growing network under time pressure. _mini-game_
 
 - [2026-10-03: Balloon Anagram Challenge](./2026-10-03-balloon-anagram-challenge/) — Unleash your word-making skills by popping balloons to collect letters and form anagrams against the clock. _mini-game_
+
+- [2026-10-04: Whimsical Caterpillar Journey](./2026-10-04-whimsical-caterpillar-journey/) — Guide a playful caterpillar through a magical garden, munching leaves while avoiding pesky bugs to thrive! _mini-game_
