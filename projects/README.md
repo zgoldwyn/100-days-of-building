@@ -129,3 +129,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-10-04: Whimsical Caterpillar Journey](./2026-10-04-whimsical-caterpillar-journey/) — Guide a playful caterpillar through a magical garden, munching leaves while avoiding pesky bugs to thrive! _mini-game_
 
 - [2026-10-05: Whimsical Iceberg Skip Game](./2026-10-05-whimsical-iceberg-skip-game/) — A lighthearted game where you skip stones across whimsical icebergs to score points while avoiding falling snowflakes. _mini-game_
+
+- [2026-10-06: Whimsical Maze Challenge](./2026-10-06-whimsical-maze-challenge/) — Navigate through a vibrant maze collecting magical stars while avoiding mischievous traps. _mini-game_
