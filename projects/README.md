@@ -135,3 +135,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-10-07: Whimsical Planet Explorer](./2026-10-07-whimsical-planet-explorer/) — Navigate your whimsical spaceship through colorful planets, collecting stars and avoiding asteroids. _mini-game_
 
 - [2026-10-08: Whimsical Sandcastle Build-Off](./2026-10-08-whimsical-sandcastle-build-off/) — Compete to build the most impressive sandcastle while racing against time and avoiding pesky waves! _mini-game_
+
+- [2026-10-09: Dynamic Color Reaction Challenge](./2026-10-09-dynamic-color-reaction-challenge/) — Test your speed and memory as you click on randomly changing colors to score points before time runs out! _mini-game_
