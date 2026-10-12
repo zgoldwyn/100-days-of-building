@@ -141,3 +141,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-10-10: Whimsical Moonlight Dance](./2026-10-10-whimsical-moonlight-dance/) — A captivating mini-game where you replicate dance moves under the moonlight to earn points while timing your clicks perfectly. _mini-game_
 
 - [2026-10-11: Whimsical Forest Maze](./2026-10-11-whimsical-forest-maze/) — Navigate a maze in a whimsical forest, collecting magical items while solving enchanting puzzles. _mini-game_
+
+- [2026-10-12: Whimsical Rocket Splatter](./2026-10-12-whimsical-rocket-splatter/) — Launch colorful rockets to create vibrant splatter art on a canvas while avoiding clouds. _mini-game_
