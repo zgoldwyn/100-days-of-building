@@ -143,3 +143,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-10-11: Whimsical Forest Maze](./2026-10-11-whimsical-forest-maze/) — Navigate a maze in a whimsical forest, collecting magical items while solving enchanting puzzles. _mini-game_
 
 - [2026-10-12: Whimsical Rocket Splatter](./2026-10-12-whimsical-rocket-splatter/) — Launch colorful rockets to create vibrant splatter art on a canvas while avoiding clouds. _mini-game_
+
+- [2026-10-13: Whimsical Connector Canvas](./2026-10-13-whimsical-connector-canvas/) — A playful game where you draw lines connecting colorful dots while racing against time to complete patterns. _mini-game_
