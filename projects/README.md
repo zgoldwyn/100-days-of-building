@@ -151,3 +151,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-10-15: Whimsical Sky Music](./2026-10-15-whimsical-sky-music/) — Create a beautiful melody by tapping on colorful clouds and arranging them to play harmonious notes. _creative-toy_
 
 - [2026-10-16: Whimsical Wind Chime Symphony](./2026-10-16-whimsical-wind-chime-symphony/) — Compose enchanting melodies by interacting with virtual wind chimes that respond to your movements. _creative-toy_
+
+- [2026-10-17: Whimsical Forest Harmony](./2026-10-17-whimsical-forest-harmony/) — Compose enchanting melodies by tapping on friendly forest creatures that play different notes. _creative-toy_
