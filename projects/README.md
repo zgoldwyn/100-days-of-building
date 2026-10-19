@@ -153,3 +153,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-10-16: Whimsical Wind Chime Symphony](./2026-10-16-whimsical-wind-chime-symphony/) — Compose enchanting melodies by interacting with virtual wind chimes that respond to your movements. _creative-toy_
 
 - [2026-10-17: Whimsical Forest Harmony](./2026-10-17-whimsical-forest-harmony/) — Compose enchanting melodies by tapping on friendly forest creatures that play different notes. _creative-toy_
+
+- [2026-10-19: Whimsical Ice Cream Scooping Game](./2026-10-19-whimsical-ice-cream-scooping-game/) — Scoop and stack colorful ice cream scoops while avoiding mischievous toppings to create the tallest cone before time runs out! _mini-game_
