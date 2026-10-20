@@ -155,3 +155,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-10-17: Whimsical Forest Harmony](./2026-10-17-whimsical-forest-harmony/) — Compose enchanting melodies by tapping on friendly forest creatures that play different notes. _creative-toy_
 
 - [2026-10-19: Whimsical Ice Cream Scooping Game](./2026-10-19-whimsical-ice-cream-scooping-game/) — Scoop and stack colorful ice cream scoops while avoiding mischievous toppings to create the tallest cone before time runs out! _mini-game_
+
+- [2026-10-20: Whimsical Totem Creator](./2026-10-20-whimsical-totem-creator/) — Design and stack quirky totems using various colorful shapes while racing against time to complete your masterpiece! _mini-game_
