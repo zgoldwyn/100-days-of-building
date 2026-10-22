@@ -159,3 +159,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-10-20: Whimsical Totem Creator](./2026-10-20-whimsical-totem-creator/) — Design and stack quirky totems using various colorful shapes while racing against time to complete your masterpiece! _mini-game_
 
 - [2026-10-21: Whimsical Color Mixer](./2026-10-21-whimsical-color-mixer/) — Mix primary colors in a magical paint shop to create vibrant new hues while racing against a timer! _mini-game_
+
+- [2026-10-22: Whimsical Cloud Matching Challenge](./2026-10-22-whimsical-cloud-matching-challenge/) — Match the floating clouds with their corresponding background colors under time pressure! _mini-game_
