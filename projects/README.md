@@ -165,3 +165,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-10-23: Whimsical Hopping Bunny Challenge](./2026-10-23-whimsical-hopping-bunny/) — Guide a playful bunny to hop across colorful platforms while collecting carrots and avoiding pitfalls. _mini-game_
 
 - [2026-10-24: Color Matching Jumping Platforms](./2026-10-24-color-matching-jumping-platforms/) — Jump between moving platforms that change colors to match a given target color before time runs out. _mini-game_
+
+- [2026-10-25: Whimsical Fruit Collecting Adventure](./2026-10-25-whimsical-fruit-collecting-adventure/) — Help a cheerful character collect falling fruits while avoiding pesky clouds! _mini-game_
