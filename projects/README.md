@@ -167,3 +167,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-10-24: Color Matching Jumping Platforms](./2026-10-24-color-matching-jumping-platforms/) — Jump between moving platforms that change colors to match a given target color before time runs out. _mini-game_
 
 - [2026-10-25: Whimsical Fruit Collecting Adventure](./2026-10-25-whimsical-fruit-collecting-adventure/) — Help a cheerful character collect falling fruits while avoiding pesky clouds! _mini-game_
+
+- [2026-10-26: Whimsical Dino Dash](./2026-10-26-whimsical-dino-dash/) — Guide a playful dinosaur through a vibrant landscape while collecting rocks and avoiding pitfalls in this fun-filled mini-game. _mini-game_
