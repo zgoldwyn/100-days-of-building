@@ -171,3 +171,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-10-26: Whimsical Dino Dash](./2026-10-26-whimsical-dino-dash/) — Guide a playful dinosaur through a vibrant landscape while collecting rocks and avoiding pitfalls in this fun-filled mini-game. _mini-game_
 
 - [2026-10-27: Whimsical Rhythm Tap Battle](./2026-10-27-whimsical-rhythm-tap-battle/) — Compete to tap on colorful icons in sync with the beat, earning points for accuracy in this fun challenge. _mini-game_
+
+- [2026-10-28: Whimsical Watercolor Waves](./2026-10-28-whimsical-watercolor-waves/) — Create beautiful watercolor effects on a canvas by clicking and dragging while controlling water flow. _creative-toy_
