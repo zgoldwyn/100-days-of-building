@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whimsical Snowball Throwing Challenge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f7ff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        canvas {
+            border: 2px solid #333;
+            background-color: #fff;
+        }
+        #score {
+            font-size: 24px;
+            margin: 10px;
+        }
+        #instructions {
+            margin: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Whimsical Snowball Throwing Challenge</h1>
+    <p id="instructions">Use your mouse to aim and throw snowballs at the moving targets!</p>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <div id="score">Score: <span id="scoreValue">0</span></div>
+    <button id="startButton">Start Game</button>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        let score = 0;
+        let isGameRunning = false;
+        let targets = [];
+        let targetCount = 5;
+        const targetSize = 30;
+        let timer;
+        let gameTime = 30;
+
+        function startGame() {
+            score = 0;
+            isGameRunning = true;
+            document.getElementById('startButton').disabled = true;
+            generateTargets();
+            draw();
+            timer = setInterval(updateTime, 1000);
+        }
+
+        function generateTargets() {
+            targets = [];
+            for(let i = 0; i < targetCount; i++) {
+                targets.push({
+                    x: Math.random() * (canvas.width - targetSize),
+                    y: Math.random() * (canvas.height - targetSize),
+                    direction: Math.random() < 0.5 ? 1 : -1,
+                    speed: Math.random() * 2 + 1
+                });
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            targets.forEach(target => {
+                ctx.beginPath();
+                ctx.arc(target.x + targetSize / 2, target.y + targetSize / 2, targetSize, 0, 2 * Math.PI);
+                ctx.fillStyle = '#ff686b';
+                ctx.fill();
+                ctx.closePath();
+                target.x += target.speed * target.direction;
+                if (target.x <= 0 || target.x >= canvas.width - targetSize) target.direction *= -1;
+            });
+            if (isGameRunning) requestAnimationFrame(draw);
+        }
+
+        canvas.addEventListener('click', (event) => {
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = event.clientX - rect.left;
+            const mouseY = event.clientY - rect.top;
+
+            targets.forEach((target, index) => {
+                const dx = mouseX - (target.x + targetSize / 2);
+                const dy = mouseY - (target.y + targetSize / 2);
+                if (Math.sqrt(dx * dx + dy * dy) < targetSize) {
+                    score++;
+                    targets.splice(index, 1);
+                }
+            });
+            document.getElementById('scoreValue').innerText = score;
+        });
+
+        function updateTime() {
+            gameTime--;
+            if (gameTime <= 0) endGame();
+        }
+
+        function endGame() {
+            isGameRunning = false;
+            clearInterval(timer);
+            alert('Game Over! Your score is: ' + score);
+            document.getElementById('startButton').disabled = false;
+        }
+
+        document.getElementById('startButton').addEventListener('click', startGame);
+    </script>
+</body>
+</html>
