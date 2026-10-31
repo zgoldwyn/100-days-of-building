@@ -175,3 +175,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-10-28: Whimsical Watercolor Waves](./2026-10-28-whimsical-watercolor-waves/) — Create beautiful watercolor effects on a canvas by clicking and dragging while controlling water flow. _creative-toy_
 
 - [2026-10-30: Whimsical Snowball Throwing Challenge](./2026-10-30-whimsical-snowball-throwing-challenge/) — Test your aim by throwing snowballs at moving targets while avoiding obstacles for a fun winter-themed challenge. _mini-game_
+
+- [2026-10-31: Whimsical Sound Wave Dash](./2026-10-31-whimsical-sound-wave-dash/) — Navigate through an enchanting field of sound waves while collecting notes and avoiding cacophonic waves. _mini-game_
