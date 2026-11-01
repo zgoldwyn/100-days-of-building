@@ -177,3 +177,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-10-30: Whimsical Snowball Throwing Challenge](./2026-10-30-whimsical-snowball-throwing-challenge/) — Test your aim by throwing snowballs at moving targets while avoiding obstacles for a fun winter-themed challenge. _mini-game_
 
 - [2026-10-31: Whimsical Sound Wave Dash](./2026-10-31-whimsical-sound-wave-dash/) — Navigate through an enchanting field of sound waves while collecting notes and avoiding cacophonic waves. _mini-game_
+
+- [2026-11-01: Whimsical Sparkle Collection](./2026-11-01-whimsical-sparkle-collection/) — Guide your character to collect shimmering sparkles while navigating through quirky obstacles and challenges. _mini-game_
