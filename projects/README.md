@@ -181,3 +181,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-11-01: Whimsical Sparkle Collection](./2026-11-01-whimsical-sparkle-collection/) — Guide your character to collect shimmering sparkles while navigating through quirky obstacles and challenges. _mini-game_
 
 - [2026-11-02: Whimsical Jump and Color Catch](./2026-11-02-whimsical-jump-and-color-catch/) — Jump and catch the correct colored blocks while avoiding the wrong ones in this colorful and fun mini-game. _mini-game_
+
+- [2026-11-03: Whimsical Garden Gatherer](./2026-11-03-whimsical-garden-gatherer/) — Collect and nurture magical plants in a whimsical garden while avoiding pesky weeds and magical pests. _mini-game_
