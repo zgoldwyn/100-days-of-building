@@ -185,3 +185,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-11-03: Whimsical Garden Gatherer](./2026-11-03-whimsical-garden-gatherer/) — Collect and nurture magical plants in a whimsical garden while avoiding pesky weeds and magical pests. _mini-game_
 
 - [2026-11-04: Whimsical Petal Painting](./2026-11-04-whimsical-petal-painting/) — Create beautiful flower petals by mixing colors and painting them on a canvas while racing against a timer! _creative-toy_
+
+- [2026-11-05: Whimsical Snowman Building](./2026-11-05-whimsical-snowman-building/) — Compete to build the tallest snowman by stacking snowballs while avoiding falling ice chunks. _mini-game_
