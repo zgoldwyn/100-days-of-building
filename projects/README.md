@@ -189,3 +189,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-11-05: Whimsical Snowman Building](./2026-11-05-whimsical-snowman-building/) — Compete to build the tallest snowman by stacking snowballs while avoiding falling ice chunks. _mini-game_
 
 - [2026-11-06: Whimsical Paint Splash Challenge](./2026-11-06-whimsical-paint-splash-challenge/) — Create colorful splashes on a canvas by throwing paint balls while avoiding obstacles and aiming for targets. _mini-game_
+
+- [2026-11-07: Whimsical Forest Adventure](./2026-11-07-whimsical-forest-adventure/) — Embark on a journey through a magical forest, collecting fruits while avoiding enchanted creatures! _mini-game_
