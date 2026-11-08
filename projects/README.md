@@ -191,3 +191,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-11-06: Whimsical Paint Splash Challenge](./2026-11-06-whimsical-paint-splash-challenge/) — Create colorful splashes on a canvas by throwing paint balls while avoiding obstacles and aiming for targets. _mini-game_
 
 - [2026-11-07: Whimsical Forest Adventure](./2026-11-07-whimsical-forest-adventure/) — Embark on a journey through a magical forest, collecting fruits while avoiding enchanted creatures! _mini-game_
+
+- [2026-11-08: Whimsical Spring Stomp Challenge](./2026-11-08-whimsical-spring-stomp-challenge/) — Jump on colorful spring platforms to collect stars while avoiding mischievous bouncy critters. _mini-game_
