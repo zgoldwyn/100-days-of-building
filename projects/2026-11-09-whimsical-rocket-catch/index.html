@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whimsical Rocket Catch</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #87CEEB;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        #game {
+            position: relative;
+            width: 400px;
+            height: 600px;
+            border: 2px solid #000;
+            background-color: #fff;
+            overflow: hidden;
+        }
+        .rocket {
+            position: absolute;
+            width: 50px;
+            height: 100px;
+            background-color: #ff4500;
+            border-radius: 25px;
+        }
+        .cloud {
+            position: absolute;
+            width: 80px;
+            height: 50px;
+            background-color: #fff;
+            border-radius: 25px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        .score {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 24px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="game">
+        <div class="score">Score: <span id="score">0</span></div>
+    </div>
+    <script>
+        const game = document.getElementById('game');
+        const scoreDisplay = document.getElementById('score');
+        let score = 0;
+        let gameInterval;
+        let cloudInterval;
+        const rocketDropInterval = 1500;
+        const maxClouds = 5;
+        const cloudSpeed = 3;
+
+        function startGame() {
+            gameInterval = setInterval(createRocket, rocketDropInterval);
+            cloudInterval = setInterval(moveClouds, 50);
+            document.addEventListener('click', catchRocket);
+        }
+
+        function createRocket() {
+            const rocket = document.createElement('div');
+            rocket.classList.add('rocket');
+            rocket.style.left = Math.random() * (game.clientWidth - 50) + 'px';
+            rocket.style.top = '0';
+            game.appendChild(rocket);
+            dropRocket(rocket);
+        }
+
+        function dropRocket(rocket) {
+            const dropSpeed = 2;
+            const drop = setInterval(() => {
+                const rocketTop = parseInt(rocket.style.top);
+                if (rocketTop < game.clientHeight) {
+                    rocket.style.top = rocketTop + dropSpeed + 'px';
+                } else {
+                    clearInterval(drop);
+                    rocket.remove();
+                }
+            }, 20);
+        }
+
+        function catchRocket(event) {
+            const rockets = document.querySelectorAll('.rocket');
+            rockets.forEach(rocket => {
+                const rocketRect = rocket.getBoundingClientRect();
+                const clickX = event.clientX;
+                const clickY = event.clientY;
+                if (
+                    clickX >= rocketRect.left &&
+                    clickX <= rocketRect.right &&
+                    clickY >= rocketRect.top &&
+                    clickY <= rocketRect.bottom
+                ) {
+                    score++;
+                    scoreDisplay.innerText = score;
+                    rocket.remove();
+                }
+            });
+        }
+
+        function moveClouds() {
+            const clouds = document.querySelectorAll('.cloud');
+            clouds.forEach(cloud => {
+                const cloudTop = parseInt(cloud.style.top);
+                cloud.style.top = cloudTop + cloudSpeed + 'px';
+                if (cloudTop > game.clientHeight) {
+                    cloud.remove();
+                }
+            });
+            if (clouds.length < maxClouds && Math.random() < 0.05) {
+                createCloud();
+            }
+        }
+
+        function createCloud() {
+            const cloud = document.createElement('div');
+            cloud.classList.add('cloud');
+            cloud.style.left = Math.random() * (game.clientWidth - 80) + 'px';
+            cloud.style.top = '0';
+            game.appendChild(cloud);
+        }
+
+        startGame();
+    </script>
+</body>
+</html>

@@ -193,3 +193,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-11-07: Whimsical Forest Adventure](./2026-11-07-whimsical-forest-adventure/) — Embark on a journey through a magical forest, collecting fruits while avoiding enchanted creatures! _mini-game_
 
 - [2026-11-08: Whimsical Spring Stomp Challenge](./2026-11-08-whimsical-spring-stomp-challenge/) — Jump on colorful spring platforms to collect stars while avoiding mischievous bouncy critters. _mini-game_
+
+- [2026-11-09: Whimsical Rocket Catch](./2026-11-09-whimsical-rocket-catch/) — Catch colorful rockets while avoiding mischievous clouds to score points in this fun mini-game. _mini-game_
