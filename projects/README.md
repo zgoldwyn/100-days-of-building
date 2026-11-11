@@ -197,3 +197,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-11-09: Whimsical Rocket Catch](./2026-11-09-whimsical-rocket-catch/) — Catch colorful rockets while avoiding mischievous clouds to score points in this fun mini-game. _mini-game_
 
 - [2026-11-10: Whimsical Harmony Dragonfly](./2026-11-10-whimsical-harmony-dragonfly/) — Guide a dragonfly through a vibrant garden while collecting colorful flowers and avoiding obstacles in this engaging mini-game. _mini-game_
+
+- [2026-11-11: Whimsical Rocket Factory](./2026-11-11-whimsical-rocket-factory/) — Assemble colorful rockets in a whimsical factory while avoiding mischievous clouds and earning points for each completed rocket. _mini-game_
