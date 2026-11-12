@@ -199,3 +199,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-11-10: Whimsical Harmony Dragonfly](./2026-11-10-whimsical-harmony-dragonfly/) — Guide a dragonfly through a vibrant garden while collecting colorful flowers and avoiding obstacles in this engaging mini-game. _mini-game_
 
 - [2026-11-11: Whimsical Rocket Factory](./2026-11-11-whimsical-rocket-factory/) — Assemble colorful rockets in a whimsical factory while avoiding mischievous clouds and earning points for each completed rocket. _mini-game_
+
+- [2026-11-12: Whimsical Jellybean Collector](./2026-11-12-whimsical-jellybean-collector/) — Guide your jellybean character through a vibrant candyland, collecting jellybeans and dodging obstacles to rack up points! _mini-game_
