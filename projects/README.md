@@ -201,3 +201,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-11-11: Whimsical Rocket Factory](./2026-11-11-whimsical-rocket-factory/) — Assemble colorful rockets in a whimsical factory while avoiding mischievous clouds and earning points for each completed rocket. _mini-game_
 
 - [2026-11-12: Whimsical Jellybean Collector](./2026-11-12-whimsical-jellybean-collector/) — Guide your jellybean character through a vibrant candyland, collecting jellybeans and dodging obstacles to rack up points! _mini-game_
+
+- [2026-11-13: Whimsical Spring Flower Dash](./2026-11-13-whimsical-spring-flower-dash/) — Race through a vibrant spring landscape to collect blooming flowers while avoiding sneaky bees. _mini-game_
