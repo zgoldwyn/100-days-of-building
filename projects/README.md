@@ -205,3 +205,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-11-13: Whimsical Spring Flower Dash](./2026-11-13-whimsical-spring-flower-dash/) — Race through a vibrant spring landscape to collect blooming flowers while avoiding sneaky bees. _mini-game_
 
 - [2026-11-14: Colorful Critters Catch](./2026-11-14-colorful-critters-catch/) — Catch colorful critters as they fall while avoiding the gray ones in a timed challenge! _mini-game_
+
+- [2026-11-15: Whimsical Snowflake Journey](./2026-11-15-whimsical-snowflake-journey/) — Navigate a magical snowflake through an enchanting winter landscape while collecting points and avoiding hazards! _mini-game_
