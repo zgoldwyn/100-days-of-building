@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whimsical Shape Shifter</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        #game {
+            text-align: center;
+        }
+        .shape {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            display: inline-block;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        #timer {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        #score {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="game">
+        <div id="timer">Time: <span id="timeLeft">30</span> seconds</div>
+        <div id="shapesContainer"></div>
+        <div id="score">Score: <span id="currentScore">0</span></div>
+    </div>
+    <script>
+        const colors = ['#ff5733', '#33ff57', '#3357ff', '#ff33a1', '#a133ff'];
+        const shapes = ['square', 'circle', 'triangle'];
+        let score = 0;
+        let timeLeft = 30;
+        let timer;
+
+        const shapesContainer = document.getElementById('shapesContainer');
+        const currentScore = document.getElementById('currentScore');
+        const timeDisplay = document.getElementById('timeLeft');
+
+        function createShape() {
+            const shapeDiv = document.createElement('div');
+            const shapeType = shapes[Math.floor(Math.random() * shapes.length)];
+            shapeDiv.className = `shape ${shapeType}`;
+            shapeDiv.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            shapeDiv.style.borderRadius = shapeType === 'circle' ? '50%' : '0';
+            shapeDiv.style.clipPath = shapeType === 'triangle' ? 'polygon(50% 0%, 0% 100%, 100% 100%)' : 'none';
+            shapeDiv.addEventListener('click', () => {
+                score += 1;
+                currentScore.textContent = score;
+                shapeDiv.style.transform = 'scale(1.2)';
+                setTimeout(() => shapeDiv.remove(), 300);
+              });
+            shapesContainer.appendChild(shapeDiv);
+        }
+
+        function startGame() {
+            timer = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    alert('Time is up! Your score is ' + score);
+                    return;
+                }
+                timeLeft--;
+                timeDisplay.textContent = timeLeft;
+                createShape();
+            }, 1000);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            startGame();
+        });
+    </script>
+</body>
+</html>
