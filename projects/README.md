@@ -209,3 +209,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-11-15: Whimsical Snowflake Journey](./2026-11-15-whimsical-snowflake-journey/) — Navigate a magical snowflake through an enchanting winter landscape while collecting points and avoiding hazards! _mini-game_
 
 - [2026-11-16: Whimsical Shape Shifter](./2026-11-16-whimsical-shape-shifter/) — Transform shapes by clicking them to create unique patterns while racing against time. _mini-game_
+
+- [2026-11-17: Whimsical Bubble Bounce](./2026-11-17-whimsical-bouncing-bubbles/) — Bounce colorful bubbles up the screen while collecting stars and avoiding spikes in this fast-paced mini-game. _mini-game_
