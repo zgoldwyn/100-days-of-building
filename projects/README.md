@@ -213,3 +213,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-11-17: Whimsical Bubble Bounce](./2026-11-17-whimsical-bouncing-bubbles/) — Bounce colorful bubbles up the screen while collecting stars and avoiding spikes in this fast-paced mini-game. _mini-game_
 
 - [2026-11-18: Whimsical Ink Splatter](./2026-11-18-whimsical-ink-splatter/) — Create dazzling ink art by splattering colors on a canvas while avoiding ink spills from mischievous critters. _creative-toy_
+
+- [2026-11-19: Whimsical Dynamic Ice Skating Challenge](./2026-11-19-whimsical-dynamic-ice-skating-challenge/) — Navigate your skater on a dynamic ice rink while collecting stars and avoiding icy obstacles. _mini-game_
