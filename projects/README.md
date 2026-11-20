@@ -215,3 +215,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-11-18: Whimsical Ink Splatter](./2026-11-18-whimsical-ink-splatter/) — Create dazzling ink art by splattering colors on a canvas while avoiding ink spills from mischievous critters. _creative-toy_
 
 - [2026-11-19: Whimsical Dynamic Ice Skating Challenge](./2026-11-19-whimsical-dynamic-ice-skating-challenge/) — Navigate your skater on a dynamic ice rink while collecting stars and avoiding icy obstacles. _mini-game_
+
+- [2026-11-20: Whimsical Rocket Jump](./2026-11-20-whimsical-rocket-jump/) — Launch your whimsical rocket through colorful clouds, collecting stars while avoiding obstacles in a timed challenge. _mini-game_
