@@ -219,3 +219,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-11-20: Whimsical Rocket Jump](./2026-11-20-whimsical-rocket-jump/) — Launch your whimsical rocket through colorful clouds, collecting stars while avoiding obstacles in a timed challenge. _mini-game_
 
 - [2026-11-21: Whimsical Bubble Jumpers](./2026-11-21-whimsical-bubble-jumpers/) — A delightful mini-game where players control bouncing bubbles, bouncing off clouds to collect colorful stars while avoiding mischievous raindrops! _mini-game_
+
+- [2026-11-22: Whimsical Ice Skating Dash](./2026-11-22-whimsical-ice-skating-dash/) — Speed through an enchanting ice rink, collecting gems while avoiding slippery spots and snowmen! _mini-game_
