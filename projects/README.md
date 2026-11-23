@@ -221,3 +221,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-11-21: Whimsical Bubble Jumpers](./2026-11-21-whimsical-bubble-jumpers/) — A delightful mini-game where players control bouncing bubbles, bouncing off clouds to collect colorful stars while avoiding mischievous raindrops! _mini-game_
 
 - [2026-11-22: Whimsical Ice Skating Dash](./2026-11-22-whimsical-ice-skating-dash/) — Speed through an enchanting ice rink, collecting gems while avoiding slippery spots and snowmen! _mini-game_
+
+- [2026-11-23: Whimsical Blob Catcher](./2026-11-23-whimsical-blob-catcher/) — A playful mini-game where you guide a whimsical blob to catch falling shapes while avoiding the wrong colors to score points. _mini-game_
