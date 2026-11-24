@@ -223,3 +223,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-11-22: Whimsical Ice Skating Dash](./2026-11-22-whimsical-ice-skating-dash/) — Speed through an enchanting ice rink, collecting gems while avoiding slippery spots and snowmen! _mini-game_
 
 - [2026-11-23: Whimsical Blob Catcher](./2026-11-23-whimsical-blob-catcher/) — A playful mini-game where you guide a whimsical blob to catch falling shapes while avoiding the wrong colors to score points. _mini-game_
+
+- [2026-11-24: Magical Forest Bloom Challenge](./2026-11-24-magical-forest-bloom-challenge/) — A delightful mini-game where you nurture magical flowers by collecting raindrops while avoiding mischievous critters. _mini-game_
