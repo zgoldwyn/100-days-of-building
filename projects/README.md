@@ -227,3 +227,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-11-24: Magical Forest Bloom Challenge](./2026-11-24-magical-forest-bloom-challenge/) — A delightful mini-game where you nurture magical flowers by collecting raindrops while avoiding mischievous critters. _mini-game_
 
 - [2026-11-25: Whimsical Photo Frame Puzzle](./2026-11-25-whimsical-photoframe-puzzle/) — Rearrange colorful photo pieces in a whimsical frame to reveal a playful image before time runs out. _puzzle_
+
+- [2026-11-26: Fluffy Bunny Time Challenge](./2026-11-26-fluffy-bunny-time-challenge/) — Guide a fluffy bunny through a meadow, hopping on colorful platforms to collect carrots while racing against the clock. _mini-game_
