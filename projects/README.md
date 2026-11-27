@@ -229,3 +229,5 @@ Small browser projects generated as part of a daily building experiment.
 - [2026-11-25: Whimsical Photo Frame Puzzle](./2026-11-25-whimsical-photoframe-puzzle/) — Rearrange colorful photo pieces in a whimsical frame to reveal a playful image before time runs out. _puzzle_
 
 - [2026-11-26: Fluffy Bunny Time Challenge](./2026-11-26-fluffy-bunny-time-challenge/) — Guide a fluffy bunny through a meadow, hopping on colorful platforms to collect carrots while racing against the clock. _mini-game_
+
+- [2026-11-27: Whimsical Pinecone Gathering Challenge](./2026-11-27-whimsical-pinecone-gathering-challenge/) — Navigate a charming woodland collecting pinecones while avoiding playful squirrels that try to steal your bounty. _mini-game_
